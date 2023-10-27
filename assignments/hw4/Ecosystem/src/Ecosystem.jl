@@ -1,4 +1,3 @@
-# src/Ecosystem.jl
 module Ecosystem
 
 using StatsBase
@@ -6,9 +5,6 @@ using StatsBase
 include("world.jl")
 include("plant.jl")
 include("animal.jl")
-
-g = Grass(1, 10)
-display(g)
 
 export World
 export Species, PlantSpecies, AnimalSpecies, Grass, Sheep, Wolf
