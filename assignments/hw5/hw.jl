@@ -107,23 +107,20 @@ function find_root(p::Polynom, rfm::RootFindingMethod=Newton, a=-5.0, b=5.0, max
 end
 
 
-function benchmark1(maxiter=100, stepsize=0.95, atol=1e-12)
-    p = from_roots([3, 2, 1, 0, -1, -2, -3])
+function benchmark1(p::Polynom, maxiter=100, stepsize=0.95, atol=1e-12)
     find_root(p, Bisection(), -5.0, 5.0, maxiter, stepsize, atol)
 end
 
-function benchmark2(maxiter=100, stepsize=0.95, atol=1e-12)
-    p = from_roots([3, 2, 1, 0, -1, -2, -3])
+function benchmark2(p::Polynom, maxiter=100, stepsize=0.95, atol=1e-12)
     find_root(p, Newton(), -5.0, 5.0, maxiter, stepsize, atol)
 end
 
-function benchmark3(maxiter=100, stepsize=0.95, atol=1e-12)
-    p = from_roots([3, 2, 1, 0, -1, -2, -3])
+function benchmark3(p::Polynom, maxiter=100, stepsize=0.95, atol=1e-12)
     find_root(p, Secant(), -5.0, 5.0, maxiter, stepsize, atol)
 end
 
 function run_test()
-    # p = from_roots([3, 2, 1, 0, -1, -2, -3])
+    p = Polynom([0,-36,0,49,0,-14,0,1])
     # @code_warntype find_root(p, Bisection(), -5.0, 5.0, maxiter, stepsize, atol)
     # @code_warntype step!(Bisection(), p, (-5.0, 5.0), stepsize)
     # @code_warntype find_root(p, Newton(), -5.0, 5.0, maxiter, stepsize, atol)
@@ -132,9 +129,9 @@ function run_test()
     # @code_warntype step!(Secant(), p, (-5.0, 5.0), stepsize)
 
     for _ in 1:1000
-        benchmark1()
-        benchmark2()
-        benchmark3()
+        x = benchmark1(p)
+        x = benchmark2(p)
+        x = benchmark3(p)
     end
 end
 
