@@ -9,7 +9,7 @@ include("animal.jl")
 export World
 export Species, PlantSpecies, AnimalSpecies, Grass, Sheep, Wolf
 export Agent, Plant, Animal
-export male, female
+export Sex, male, female, randsex
 export agent_step!, eat!, eats, find_food, reproduce!, world_step!, agent_count
 
 end
